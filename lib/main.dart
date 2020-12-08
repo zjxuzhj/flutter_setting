@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(FadeAppTest());
 }
 
 class MyApp extends StatelessWidget {
@@ -63,55 +63,192 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+// Default value for toggle
+  bool toggle = true;
+
+  void _toggle() {
+    setState(() {
+      toggle = !toggle;
+    });
+  }
+
+  _getToggleChild() {
+    if (toggle) {
+      return Text('Toggle One');
+    } else {
+      return ElevatedButton(onPressed: () {}, child: Text('Toggle Two'));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    return Scaffold(
+      body: Center(
+        child: _getToggleChild(),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _toggle,
+        tooltip: 'Update Text',
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+  // @override
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text(widget.title),
+  //     ),
+  //     body: Center(
+  //       child: Column(
+  //         mainAxisAlignment: MainAxisAlignment.center,
+  //         children: <Widget>[
+  //           Text(
+  //             '意见反馈',
+  //           ),
+  //           Text(
+  //             '$_counter',
+  //             style: Theme.of(context).textTheme.headline4,
+  //           ),
+  //       // AlertDialog(
+  //       //   title: Text("提示"),
+  //       //   content: Text("您确定要删除当前文件吗?"),
+  //       //   actions: <Widget>[
+  //       //     FlatButton(
+  //       //       child: Text("取消"),
+  //       //       onPressed: () => Navigator.of(context).pop(), //关闭对话框
+  //       //     ),
+  //       //     FlatButton(
+  //       //       child: Text("删除"),
+  //       //       onPressed: () {
+  //       //         // ... 执行删除操作
+  //       //         Navigator.of(context).pop(true); //关闭对话框
+  //       //       },
+  //       //     ),
+  //       //   ],
+  //       // ),
+  //         ],
+  //       ),
+  //     ),
+  //     floatingActionButton: FloatingActionButton(
+  //       onPressed: _incrementCounter,
+  //       tooltip: 'Increment',
+  //       child: Icon(Icons.add),
+  //     ), // This trailing comma makes auto-formatting nicer for build methods
+  //   );
+  // }
+
+
+//
+// @override
+// Widget build(BuildContext context) {
+//   // This method is rerun every time setState is called, for instance as done
+//   // by the _incrementCounter method above.
+//   //
+//   // The Flutter framework has been optimized to make rerunning build methods
+//   // fast, so that you can just rebuild anything that needs updating rather
+//   // than having to individually change instances of widgets.
+//   return Scaffold(
+//     appBar: AppBar(
+//       // Here we take the value from the MyHomePage object that was created by
+//       // the App.build method, and use it to set our appbar title.
+//       title: Text(widget.title),
+//     ),
+//     body: Center(
+//       // Center is a layout widget. It takes a single child and positions it
+//       // in the middle of the parent.
+//       child: Column(
+//         // Column is also a layout widget. It takes a list of children and
+//         // arranges them vertically. By default, it sizes itself to fit its
+//         // children horizontally, and tries to be as tall as its parent.
+//         //
+//         // Invoke "debug painting" (press "p" in the console, choose the
+//         // "Toggle Debug Paint" action from the Flutter Inspector in Android
+//         // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
+//         // to see the wireframe for each widget.
+//         //
+//         // Column has various properties to control how it sizes itself and
+//         // how it positions its children. Here we use mainAxisAlignment to
+//         // center the children vertically; the main axis here is the vertical
+//         // axis because Columns are vertical (the cross axis would be
+//         // horizontal).
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: <Widget>[
+//           Text(
+//             'You have pushed the button this many times:',
+//           ),
+//           Text(
+//             '$_counter',
+//             style: Theme.of(context).textTheme.headline4,
+//           ),
+//           Text('My Book 《Android群英传》' * 1),
+//         ],
+//       ),
+//     ),
+//     floatingActionButton: FloatingActionButton(
+//       onPressed: _incrementCounter,
+//       tooltip: 'Increment',
+//       child: Icon(Icons.add),
+//     ), // This trailing comma makes auto-formatting nicer for build methods.
+//   );
+// }
+}
+
+class FadeAppTest extends StatelessWidget {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fade Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyFadeTest(title: 'Fade Demo'),
+    );
+  }
+}
+
+class MyFadeTest extends StatefulWidget {
+  MyFadeTest({Key key, this.title}) : super(key: key);
+  final String title;
+  @override
+  _MyFadeTest createState() => _MyFadeTest();
+}
+
+class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
+  AnimationController controller;
+  CurvedAnimation curve;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      duration: const Duration(milliseconds: 2000),
+      vsync: this,
+    );
+    curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
+          child: Container(
+              child: FadeTransition(
+                  opacity: curve,
+                  child: FlutterLogo(
+                    size: 100.0,
+                  )))),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+        tooltip: 'Fade',
+        child: Icon(Icons.brush),
+        onPressed: () {
+          controller.forward();
+        },
+      ),
     );
   }
 }
