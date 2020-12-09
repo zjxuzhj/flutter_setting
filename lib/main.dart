@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/new.dart';
 
 void main() {
-  runApp(FadeAppTest());
+  runApp(MaterialApp(
+    home: MyHomePage(),
+    routes: <String, WidgetBuilder>{
+      '/a': (BuildContext context) => DemoApp(),
+      '/b': (BuildContext context) => SampleApp(),
+      '/c': (BuildContext context) => DemoApp(),
+    },
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -69,6 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
   void _toggle() {
     setState(() {
       toggle = !toggle;
+      if (toggle) {
+        Navigator.of(context).pushNamed('/a');
+      } else {
+        Navigator.of(context).pushNamed('/b');
+      }
     });
   }
 
@@ -93,51 +106,50 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  // @override
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       title: Text(widget.title),
-  //     ),
-  //     body: Center(
-  //       child: Column(
-  //         mainAxisAlignment: MainAxisAlignment.center,
-  //         children: <Widget>[
-  //           Text(
-  //             '意见反馈',
-  //           ),
-  //           Text(
-  //             '$_counter',
-  //             style: Theme.of(context).textTheme.headline4,
-  //           ),
-  //       // AlertDialog(
-  //       //   title: Text("提示"),
-  //       //   content: Text("您确定要删除当前文件吗?"),
-  //       //   actions: <Widget>[
-  //       //     FlatButton(
-  //       //       child: Text("取消"),
-  //       //       onPressed: () => Navigator.of(context).pop(), //关闭对话框
-  //       //     ),
-  //       //     FlatButton(
-  //       //       child: Text("删除"),
-  //       //       onPressed: () {
-  //       //         // ... 执行删除操作
-  //       //         Navigator.of(context).pop(true); //关闭对话框
-  //       //       },
-  //       //     ),
-  //       //   ],
-  //       // ),
-  //         ],
-  //       ),
-  //     ),
-  //     floatingActionButton: FloatingActionButton(
-  //       onPressed: _incrementCounter,
-  //       tooltip: 'Increment',
-  //       child: Icon(Icons.add),
-  //     ), // This trailing comma makes auto-formatting nicer for build methods
-  //   );
-  // }
-
+// @override
+// Widget build(BuildContext context) {
+//   return Scaffold(
+//     appBar: AppBar(
+//       title: Text(widget.title),
+//     ),
+//     body: Center(
+//       child: Column(
+//         mainAxisAlignment: MainAxisAlignment.center,
+//         children: <Widget>[
+//           Text(
+//             '意见反馈',
+//           ),
+//           Text(
+//             '$_counter',
+//             style: Theme.of(context).textTheme.headline4,
+//           ),
+//       // AlertDialog(
+//       //   title: Text("提示"),
+//       //   content: Text("您确定要删除当前文件吗?"),
+//       //   actions: <Widget>[
+//       //     FlatButton(
+//       //       child: Text("取消"),
+//       //       onPressed: () => Navigator.of(context).pop(), //关闭对话框
+//       //     ),
+//       //     FlatButton(
+//       //       child: Text("删除"),
+//       //       onPressed: () {
+//       //         // ... 执行删除操作
+//       //         Navigator.of(context).pop(true); //关闭对话框
+//       //       },
+//       //     ),
+//       //   ],
+//       // ),
+//         ],
+//       ),
+//     ),
+//     floatingActionButton: FloatingActionButton(
+//       onPressed: _incrementCounter,
+//       tooltip: 'Increment',
+//       child: Icon(Icons.add),
+//     ), // This trailing comma makes auto-formatting nicer for build methods
+//   );
+// }
 
 //
 // @override
@@ -211,6 +223,7 @@ class FadeAppTest extends StatelessWidget {
 class MyFadeTest extends StatefulWidget {
   MyFadeTest({Key key, this.title}) : super(key: key);
   final String title;
+
   @override
   _MyFadeTest createState() => _MyFadeTest();
 }
@@ -251,4 +264,53 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
       ),
     );
   }
+}
+
+class DemoApp extends StatelessWidget {
+  Widget build(BuildContext context) => Scaffold(body: Signature());
+}
+
+class Signature extends StatefulWidget {
+  SignatureState createState() => SignatureState();
+}
+
+class SignatureState extends State<Signature> {
+  List<Offset> _points = <Offset>[];
+
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onPanUpdate: (DragUpdateDetails details) {
+        setState(() {
+          RenderBox referenceBox = context.findRenderObject();
+          Offset localPosition =
+              referenceBox.globalToLocal(details.globalPosition);
+          _points = List.from(_points)..add(localPosition);
+        });
+      },
+      onPanEnd: (DragEndDetails details) => _points.add(null),
+      child: CustomPaint(
+        painter: SignaturePainter(_points),
+        size: Size.infinite,
+      ),
+    );
+  }
+}
+
+class SignaturePainter extends CustomPainter {
+  SignaturePainter(this.points);
+
+  final List<Offset> points;
+
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint()
+      ..color = Colors.black
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = 5.0;
+    for (int i = 0; i < points.length - 1; i++) {
+      if (points[i] != null && points[i + 1] != null)
+        canvas.drawLine(points[i], points[i + 1], paint);
+    }
+  }
+
+  bool shouldRepaint(SignaturePainter other) => other.points != points;
 }
