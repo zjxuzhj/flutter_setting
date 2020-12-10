@@ -50,7 +50,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
   Widget getRow(int i) {
     return Padding(
       padding: EdgeInsets.all(10.0),
-      child: Text("Row ${widgets[i]["title"]}"),
+      child: Text("Row ${widgets[i]["id"]} ${i}++"),
     );
   }
 

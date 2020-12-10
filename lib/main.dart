@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/new.dart';
+import 'package:flutter_app/isolate.dart';
+import 'package:flutter_app/widgets.dart';
 
 void main() {
   runApp(MaterialApp(
     home: MyHomePage(),
     routes: <String, WidgetBuilder>{
       '/a': (BuildContext context) => DemoApp(),
-      '/b': (BuildContext context) => SampleApp(),
+      '/b': (BuildContext context) => SampleApp2(),
       '/c': (BuildContext context) => DemoApp(),
     },
   ));
@@ -93,11 +95,23 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  _getNewWidget() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text('Row One'),
+        Text('Row Two'),
+        Text('Row Three'),
+        Text('Row Four'),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _getToggleChild(),
+        child: _getNewWidget(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _toggle,
