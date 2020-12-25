@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/new.dart';
 import 'package:flutter_app/isolate.dart';
-import 'package:flutter_app/widgets.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -97,12 +95,124 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _getNewWidget() {
     return Row(
+      children: [
+        // new Expanded(
+        //   child: new Container(
+        //     child: new Icon(
+        //       Icons.access_time,
+        //       size: 50.0,
+        //     ),
+        //     color: Colors.red,
+        //   ),
+        //   flex: 6,
+        // ),
+        new Expanded(
+          child: new Container(
+            child: new Icon(
+              Icons.pie_chart,
+              size: 100.0,
+            ),
+            color: Colors.blue,
+          ),
+          flex: 4,
+        ),
+        new Expanded(
+          child: new Container(
+            child: new Icon(
+              Icons.email,
+              size: 150.0,
+            ),
+            color: Colors.green,
+          ),
+          flex: 6,
+        ),
+      ],
+    );
+  }
+
+  // _getNewWidget() {
+  //   return Row(
+  //     mainAxisAlignment: MainAxisAlignment.center,
+  //     children: <Widget>[
+  //       Text('Row One'),
+  //       Text('Row Two'),
+  //       Text('Row Three'),
+  //       Text('Row Four'),
+  //     ],
+  //   );
+  // }
+  double _containerHeight = 120,
+      _imageHeight = 80,
+      _iconTop = 44,
+      _iconLeft = 12,
+      _marginLeft = 110;
+
+  _getOtherWidget() {
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Text('Row One'),
-        Text('Row Two'),
-        Text('Row Three'),
-        Text('Row Four'),
+        // Positioned(
+        //   left: 0,
+        //   right: 0,
+        //   height: _containerHeight,
+        //   child: Container(color: Colors.blue),
+        // ),
+        // Positioned(
+        //   left: _iconLeft,
+        //   top: _iconTop,
+        //   child: Icon(Icons.settings, color: Colors.white),
+        // ),
+        // Positioned(
+        //   right: _iconLeft,
+        //   top: _iconTop,
+        //   child: Icon(Icons.bubble_chart, color: Colors.white),
+        // ),
+        // Positioned(
+        //   left: _iconLeft,
+        //   top: _containerHeight - _imageHeight / 2,
+        //   child: ClipOval(
+        //       child: Image.asset("assets/images/profile.jpg",
+        //           fit: BoxFit.cover,
+        //           height: _imageHeight,
+        //           width: _imageHeight)),
+        // ),
+        // Positioned(
+        //   left: _marginLeft,
+        //   top: _containerHeight - (_imageHeight / 2.5),
+        //   child: Text("CopsOnRoad",
+        //       style: TextStyle(
+        //           color: Colors.white,
+        //           fontWeight: FontWeight.w500,
+        //           fontSize: 18)),
+        // ),
+        // Positioned.fill(
+        //   left: _marginLeft,
+        //   top: _containerHeight + (_imageHeight / 4),
+        //   child: Row(
+        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        //     children: <Widget>[
+        //       Column(
+        //         children: <Widget>[
+        //           Text("2", style: TextStyle(fontWeight: FontWeight.bold)),
+        //           Text("Gold", style: TextStyle(color: Colors.grey)),
+        //         ],
+        //       ),
+        //       Column(
+        //         children: <Widget>[
+        //           Text("22", style: TextStyle(fontWeight: FontWeight.bold)),
+        //           Text("Silver", style: TextStyle(color: Colors.grey)),
+        //         ],
+        //       ),
+        //       Column(
+        //         children: <Widget>[
+        //           Text("28", style: TextStyle(fontWeight: FontWeight.bold)),
+        //           Text("Bronze", style: TextStyle(color: Colors.grey)),
+        //         ],
+        //       ),
+        //       Container(),
+        //     ],
+        //   ),
+        // ),
       ],
     );
   }
@@ -111,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _getNewWidget(),
+        child: _getOtherWidget(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _toggle,
