@@ -59,19 +59,32 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  List<Widget> widgets = [];
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < 100; i++) {
+      widgets.add(getRow(i));
+    }
   }
 
-// Default value for toggle
+  Widget getRow(int i) {
+    return GestureDetector(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Text("Row $i"),
+      ),
+      onTap: () {
+        setState(() {
+          widgets = List.from(widgets);
+          widgets.add(getRow(widgets.length));
+          print('row $i');
+        });
+      },
+    );
+  }
+
   bool toggle = true;
 
   void _toggle() {
@@ -89,7 +102,8 @@ class _MyHomePageState extends State<MyHomePage> {
     if (toggle) {
       return Text('Toggle One');
     } else {
-      return ElevatedButton(onPressed: () {}, child: Text('Toggle Two'));
+//      return ElevatedButton(onPressed: () {}, child: Text('Toggle Two'));
+      return Text('Toggle wne');
     }
   }
 
@@ -151,68 +165,76 @@ class _MyHomePageState extends State<MyHomePage> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        // Positioned(
-        //   left: 0,
-        //   right: 0,
-        //   height: _containerHeight,
-        //   child: Container(color: Colors.blue),
-        // ),
-        // Positioned(
-        //   left: _iconLeft,
-        //   top: _iconTop,
-        //   child: Icon(Icons.settings, color: Colors.white),
-        // ),
-        // Positioned(
-        //   right: _iconLeft,
-        //   top: _iconTop,
-        //   child: Icon(Icons.bubble_chart, color: Colors.white),
-        // ),
-        // Positioned(
-        //   left: _iconLeft,
-        //   top: _containerHeight - _imageHeight / 2,
-        //   child: ClipOval(
-        //       child: Image.asset("assets/images/profile.jpg",
-        //           fit: BoxFit.cover,
-        //           height: _imageHeight,
-        //           width: _imageHeight)),
-        // ),
-        // Positioned(
-        //   left: _marginLeft,
-        //   top: _containerHeight - (_imageHeight / 2.5),
-        //   child: Text("CopsOnRoad",
-        //       style: TextStyle(
-        //           color: Colors.white,
-        //           fontWeight: FontWeight.w500,
-        //           fontSize: 18)),
-        // ),
-        // Positioned.fill(
-        //   left: _marginLeft,
-        //   top: _containerHeight + (_imageHeight / 4),
-        //   child: Row(
-        //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        //     children: <Widget>[
-        //       Column(
-        //         children: <Widget>[
-        //           Text("2", style: TextStyle(fontWeight: FontWeight.bold)),
-        //           Text("Gold", style: TextStyle(color: Colors.grey)),
-        //         ],
-        //       ),
-        //       Column(
-        //         children: <Widget>[
-        //           Text("22", style: TextStyle(fontWeight: FontWeight.bold)),
-        //           Text("Silver", style: TextStyle(color: Colors.grey)),
-        //         ],
-        //       ),
-        //       Column(
-        //         children: <Widget>[
-        //           Text("28", style: TextStyle(fontWeight: FontWeight.bold)),
-        //           Text("Bronze", style: TextStyle(color: Colors.grey)),
-        //         ],
-        //       ),
-        //       Container(),
-        //     ],
-        //   ),
-        // ),
+        ListView(
+          children: <Widget>[
+            Text('Row One'),
+            Text('Row Two'),
+            Text('Row Three'),
+            Text('Row Four'),
+          ],
+        ),
+        Positioned(
+          left: 0,
+          right: 0,
+          height: _containerHeight,
+          child: Container(color: Colors.blue),
+        ),
+        Positioned(
+          left: _iconLeft,
+          top: _iconTop,
+          child: Icon(Icons.settings, color: Colors.white),
+        ),
+        Positioned(
+          right: _iconLeft,
+          top: _iconTop,
+          child: Icon(Icons.bubble_chart, color: Colors.white),
+        ),
+//         Positioned(
+//           left: _iconLeft,
+//           top: _containerHeight - _imageHeight / 2,
+//           child: ClipOval(
+//               child: Image.asset("assets/images/profile.jpg",
+//                   fit: BoxFit.cover,
+//                   height: _imageHeight,
+//                   width: _imageHeight)),
+//         ),
+        Positioned(
+          left: _marginLeft,
+          top: _containerHeight - (_imageHeight / 2.5),
+          child: Text("CopsOnRoad",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18)),
+        ),
+        Positioned.fill(
+          left: _marginLeft,
+          top: _containerHeight + (_imageHeight / 4),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text("2", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text("Gold", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("22", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text("Silver", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              Column(
+                children: <Widget>[
+                  Text("28", style: TextStyle(fontWeight: FontWeight.bold)),
+                  Text("Bronze", style: TextStyle(color: Colors.grey)),
+                ],
+              ),
+              Container(),
+            ],
+          ),
+        ),
       ],
     );
   }
@@ -221,7 +243,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _getOtherWidget(),
+        child: _aaaa(),
+//        child: _getOtherWidget(),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _toggle,
@@ -328,6 +351,10 @@ class _MyHomePageState extends State<MyHomePage> {
 //     ), // This trailing comma makes auto-formatting nicer for build methods.
 //   );
 // }
+}
+
+_aaaa() {
+  return ListView(children: widgets);
 }
 
 class FadeAppTest extends StatelessWidget {
