@@ -49,6 +49,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/anim_bg.jpg
+    - assets/images/pavlova.jpg
+    - assets/images/lake.jpg
+    - assets/images/icon_error_close.png
     - lib/isolate.dart
 
     # An image asset can refer to one or more resolution-specific "variants", see
