@@ -49,6 +49,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/anim_bg.jpg
+    - assets/images/icon_1.png
     - assets/images/pavlova.jpg
     - assets/images/lake.jpg
     - assets/images/icon_error_close.png
