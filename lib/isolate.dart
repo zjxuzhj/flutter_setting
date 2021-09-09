@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/widgets.dart';
 import 'package:http/http.dart' as http;
 
+/**
+ * 状态页面
+ */
 class SampleApp2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -50,10 +53,9 @@ class _SampleAppPageState extends State<SampleAppPage> {
     if (showLoadingDialog()) {
       return getProgressDialog();
     } else {
-      runApp(Center(child: LifecycleWatcher()));
-      // return Padding(padding: EdgeInsets.all(100.0), child: Text(sssss.aaaaaa));
-      return Text(sssss.aaaaaa);
-      // return Image.asset('assets/images/anim_bg.jpg');
+      // runApp(Center(child: LifecycleWatcher()));
+      // return Text(sssss.aaaaaa);
+      return getListView();
     }
   }
 
@@ -87,7 +89,6 @@ class _SampleAppPageState extends State<SampleAppPage> {
     ReceivePort receivePort = ReceivePort();
     await Isolate.spawn(dataLoader, receivePort.sendPort);
 
-    // The 'echo' isolate sends its SendPort as the first message
     SendPort sendPort = await receivePort.first;
 
     List msg = await sendReceive(
