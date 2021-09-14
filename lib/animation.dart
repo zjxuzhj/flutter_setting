@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/EventBusUtil.dart';
+import 'package:flutter_app/utils/event_bus.dart';
 
 /// 动画
 class AnimationFadeAppTest extends StatelessWidget {
-  // This widget is the root of your application.
+
+  static final String sName = "AnimationFadeAppTest";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,6 +40,13 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
       vsync: this,
     );
     curve = CurvedAnimation(parent: controller, curve: Curves.easeIn);
+    // 调用 eventBus.fir 发送事件信息
+    // eventBus.fire(EventFn({
+    //   'a':'b',
+    //   'c':'e'
+    // }));
+    EventBusUtil.fire(LoginEvent(LoginEvent.eventIn));
+    EventBusUtil.fire(OrderStatusEvent());
   }
 
   @override
@@ -61,4 +72,3 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
     );
   }
 }
-

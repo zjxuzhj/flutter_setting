@@ -9,6 +9,8 @@ void main() {
 }
 
 class BuildUpWidget extends StatelessWidget {
+  static final String sName = "BuildUpWidget";
+
   @override
   Widget build(BuildContext context) {
     return buildUpWidget();

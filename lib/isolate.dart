@@ -2,13 +2,15 @@ import 'dart:convert';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/widgets.dart';
+import 'package:flutter_app/widget/widgets.dart';
 import 'package:http/http.dart' as http;
 
 /**
  * 状态页面
  */
 class SampleApp2 extends StatelessWidget {
+  static final String sName = "SampleApp2";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

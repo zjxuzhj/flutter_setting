@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class SampleApp extends StatelessWidget {
+  static final String sName = "SampleApp";
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

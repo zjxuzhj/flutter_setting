@@ -21,26 +21,26 @@ class MyApp extends StatelessWidget {
 
   Widget buildRow() =>
       // #docregion Row
-  Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      Image.asset('assets/images/anim_bg.jpg'),
-      Image.asset('assets/images/anim_bg.jpg'),
-      Image.asset('assets/images/anim_bg.jpg'),
-    ],
-  );
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset('assets/images/anim_bg.jpg'),
+          Image.asset('assets/images/anim_bg.jpg'),
+          Image.asset('assets/images/anim_bg.jpg'),
+        ],
+      );
+
   // #enddocregion Row
 
   Widget buildColumn() =>
       // #docregion Column
-  Column(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    children: [
-      Image.asset('assets/images/anim_bg.jpg'),
-      Image.asset('assets/images/anim_bg.jpg'),
-      Image.asset('assets/images/anim_bg.jpg'),
-    ],
-  );
+      Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Image.asset('assets/images/anim_bg.jpg'),
+          Image.asset('assets/images/anim_bg.jpg'),
+          Image.asset('assets/images/anim_bg.jpg'),
+        ],
+      );
 // #enddocregion Column
 }
-
