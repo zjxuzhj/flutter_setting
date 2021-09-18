@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:isolate';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/widget/widgets.dart';
+import 'package:flutter_app/widget/lifecycle_watcher.dart';
 import 'package:http/http.dart' as http;
 
 /**

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+///格子列表
+class GridList extends StatelessWidget {
   static final showGrid = false; // Set to false to show ListView
 
   @override

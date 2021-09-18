@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class SampleApp extends StatelessWidget {
+///网络请求加竖排list
+class NetworkListRow extends StatelessWidget {
   static final String sName = "SampleApp";
 
   @override
@@ -13,19 +14,19 @@ class SampleApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SampleAppPage(),
+      home: NetworkListRowPage(),
     );
   }
 }
 
-class SampleAppPage extends StatefulWidget {
-  SampleAppPage({Key key}) : super(key: key);
+class NetworkListRowPage extends StatefulWidget {
+  NetworkListRowPage({Key key}) : super(key: key);
 
   @override
-  _SampleAppPageState createState() => _SampleAppPageState();
+  _NetworkListRowPageState createState() => _NetworkListRowPageState();
 }
 
-class _SampleAppPageState extends State<SampleAppPage> {
+class _NetworkListRowPageState extends State<NetworkListRowPage> {
   List widgets = [];
 
   @override

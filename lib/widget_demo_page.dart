@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/layout/container_demo.dart';
 
-import 'button_page.dart';
-import 'layout/buildupwidget.dart';
+import 'a_button_page.dart';
+import 'a_layout_page.dart';
+import 'layout/buildup_widget.dart';
 
 class WidgetDemoPage extends StatelessWidget {
   static final String sName = "WidgetDemoPage";
@@ -44,11 +46,13 @@ class WidgetDemoPage extends StatelessWidget {
                       ),
                     );
                   }),
-              ElevatedButton(
-                  child: Text("Build Up"),
-                  onPressed: () {
-                    jump(context, BuildUpWidget.sName);
-                  }),
+              RaisedButton(
+                child: Text("LayoutPage"),
+                onPressed: () {
+                  jump(context, LayoutPage.sName);
+                },
+              ),
+              ElevatedButton(child: Text("Build Up"), onPressed: () {}),
             ]),
         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       );

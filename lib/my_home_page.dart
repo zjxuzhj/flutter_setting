@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app/utils/EventBusUtil.dart';
+import 'package:flutter_app/utils/eventbus_util.dart';
 import 'package:flutter_app/widget_demo_page.dart';
 
 class MyHomePage extends StatefulWidget {

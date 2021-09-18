@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-/**
- * 画板页面
- */
+/// 画板页面
 class SignatureApp extends StatelessWidget {
   Widget build(BuildContext context) => Scaffold(body: Signature());
 }

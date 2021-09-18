@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
+///左右格子布局
+class ContainerDemo extends StatelessWidget {
+  static final String sName = "LayoutDemo";
 
-class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

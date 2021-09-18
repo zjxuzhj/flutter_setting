@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/utils/EventBusUtil.dart';
+import 'package:flutter_app/utils/eventbus_util.dart';
 import 'package:flutter_app/utils/event_bus.dart';
 
 /// 动画

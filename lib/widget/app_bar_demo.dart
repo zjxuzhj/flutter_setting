@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
-class MyAppBar extends StatelessWidget {
-  MyAppBar({this.title});
+///标题
+class AppBarDemo extends StatelessWidget {
+  AppBarDemo({this.title});
 
   final Widget title;
 
@@ -43,7 +44,7 @@ class MyScaffold extends StatelessWidget {
       // Column is a vertical, linear layout.
       child: Column(
         children: <Widget>[
-          MyAppBar(
+          AppBar(
             title: Text(
               'Example title',
               style: Theme.of(context).primaryTextTheme.headline6,
@@ -81,15 +82,4 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
-
-class MyApp1 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-//    return ;
-  }
-}
-
-void main() {
-  runApp(MyApp());
 }

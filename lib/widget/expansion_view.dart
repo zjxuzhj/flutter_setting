@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const Duration _kExpand = Duration(milliseconds: 200);
 
-///flutter 扩展布局（查看更多，收起）
+///扩展布局（查看更多，收起）
 ///在平时的开发中，我们有时会用到扩展布局，这种布局仅显示view的一部分，当点击查看更多时，整个view将会展现。点击收起，又会展示view的一部分。
 class ExpansionView extends StatefulWidget {
   final double defaultHeight;

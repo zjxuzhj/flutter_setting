@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 
 /// 用于横向纵向排布widget（Row横向和Column纵向）
-void main() {
-  runApp(MaterialApp(
-    home: LinearLayoutPage(),
-  ));
-}
-
 class LinearLayoutPage extends StatelessWidget {
+  static final String sName = "LinearLayoutPage";
+
   final TextStyle baseStyle = TextStyle(color: Color(0xff124567), fontSize: 22);
 
   @override

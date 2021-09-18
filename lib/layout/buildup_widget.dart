@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 
 /// 组合控件，左边评论 右边图片 ，pad页面
-
-void main() {
-  runApp(MaterialApp(
-    home: BuildUpWidget(),
-  ));
-}
-
 class BuildUpWidget extends StatelessWidget {
   static final String sName = "BuildUpWidget";
 

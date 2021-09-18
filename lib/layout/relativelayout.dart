@@ -1,19 +1,15 @@
-///获得屏幕宽高
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+///获得屏幕宽高
 final width = window.physicalSize.width;
 final height = window.physicalSize.height;
 
 ///绝对布局和相对布局
-void main() {
-  runApp(MaterialApp(
-    home: RelativeLayoutPage(),
-  ));
-}
-
 class RelativeLayoutPage extends StatefulWidget {
+  static final String sName = "RelativeLayoutPage";
+
   RelativeLayoutPage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -46,17 +42,49 @@ class BaseState extends State<RelativeLayoutPage> {
     /// 使用 align 实现相对布局
     return Stack(
       children: <Widget>[
-        Align(alignment: Alignment.center, child: Text("Center", style: baseStyle),),
-        Align(alignment: Alignment.topRight, child: Text("Top\nRight", style: baseStyle),),
-        Align(alignment: Alignment.centerRight, child: Text("Center\nRight", style: baseStyle),),
-        Align(alignment: Alignment.bottomRight, child: Text("Bottom\nRight", style: baseStyle),),
-        Align(alignment: Alignment.topLeft, child: Text("Top\nLeft", style: baseStyle),),
-        Align(alignment: Alignment.centerLeft, child: Text("Center\nLeft", style: baseStyle),),
-        Align(alignment: Alignment.bottomLeft, child: Text("Bottom\nLeft", style: baseStyle),),
-        Align(alignment: Alignment.topCenter, child: Text("Top\nCenter", style: baseStyle),),
-        Align(alignment: Alignment.bottomCenter, child: Text("Bottom\nCenter", style: baseStyle),),
-        Align(alignment: Alignment(0.0, 0.5), child: Text("Custom\nPostition",
-          style: TextStyle(color: Colors.red, fontSize: 20.0, fontWeight: FontWeight.w800),),),
+        Align(
+          alignment: Alignment.center,
+          child: Text("Center", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.topRight,
+          child: Text("Top\nRight", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.centerRight,
+          child: Text("Center\nRight", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.bottomRight,
+          child: Text("Bottom\nRight", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Text("Top\nLeft", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Text("Center\nLeft", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.bottomLeft,
+          child: Text("Bottom\nLeft", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: Text("Top\nCenter", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Text("Bottom\nCenter", style: baseStyle),
+        ),
+        Align(
+          alignment: Alignment(0.0, 0.5),
+          child: Text(
+            "Custom\nPostition",
+            style: TextStyle(color: Colors.red, fontSize: 20.0, fontWeight: FontWeight.w800),
+          ),
+        ),
       ],
     );
   }

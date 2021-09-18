@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/widget/expansion_view.dart';
 import 'package:flutter_app/widget/money_text_input_formatter.dart';
 
-//flutter TextField 金额输入 保留2位小数
+///flutter TextField 金额输入 保留2位小数
 class TextFieldPage extends StatefulWidget {
   static final String sName = "TextFieldPage";
 

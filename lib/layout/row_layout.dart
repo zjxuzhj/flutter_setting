@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
+class RowLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,8 +26,6 @@ class MyApp extends StatelessWidget {
         ],
       );
 
-  // #enddocregion Row
-
   Widget buildColumn() =>
       // #docregion Column
       Column(
@@ -42,5 +36,4 @@ class MyApp extends StatelessWidget {
           Image.asset('assets/images/anim_bg.jpg'),
         ],
       );
-// #enddocregion Column
 }
