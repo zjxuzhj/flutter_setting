@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/utils/navigator_utils.dart';
+import 'package:flutter_app/widget/my_app_bar.dart';
 import 'package:http/http.dart' as http;
 
 import 'layout/buildup_widget.dart';
@@ -17,53 +18,51 @@ class LayoutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Widget list App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: MyAppBar(
+        centerTitle: "Widget Demo",
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Widget Demo"),
-        ),
-        body: buildRow(context),
-      ),
+      body: buildRow(context),
     );
   }
 
   Widget buildRow(BuildContext context) =>
       // #docregion Row
-      Row(children: [
-        ElevatedButton(
-          child: Text("组合控件"),
-          onPressed: () {
-            Utils.NavigatorRouter(context, new BuildUpWidget());
-          },
-        ),
-        RaisedButton(
-          child: Text("左右格子"),
-          onPressed: () {
-            Utils.NavigatorRouter(context, new ContainerDemo());
-          },
-        ),
-        FlatButton(
-          child: Text("横向纵向排布"),
-          onPressed: () {
-            Utils.NavigatorRouter(context, new LinearLayoutPage());
-          },
-        ),
-        OutlineButton(
-          child: Text("相对布局"),
-          onPressed: () {
-            Utils.NavigatorRouter(context, new RelativeLayoutPage());
-          },
-        ),
-        RaisedButton.icon(
-          icon: Icon(Icons.send),
-          label: Text("上下布局"),
-          onPressed: () {
-            Utils.NavigatorRouter(context, new TitleRowLayout());
-          },
-        ),
-      ]);
+      Wrap(
+          spacing: 10, //- 横轴元素间的间距
+          runSpacing: 10, //- 纵轴间距
+          alignment: WrapAlignment.spaceBetween, //- 两边对齐
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("组合控件"),
+              onPressed: () {
+                Utils.NavigatorRouter(context, new BuildUpWidget());
+              },
+            ),
+            RaisedButton(
+              child: Text("左右格子"),
+              onPressed: () {
+                Utils.NavigatorRouter(context, new ContainerDemo());
+              },
+            ),
+            FlatButton(
+              child: Text("横向纵向排布"),
+              onPressed: () {
+                Utils.NavigatorRouter(context, new LinearLayoutPage());
+              },
+            ),
+            OutlineButton(
+              child: Text("相对布局"),
+              onPressed: () {
+                Utils.NavigatorRouter(context, new RelativeLayoutPage());
+              },
+            ),
+            RaisedButton.icon(
+              icon: Icon(Icons.send),
+              label: Text("上下布局"),
+              onPressed: () {
+                Utils.NavigatorRouter(context, new TitleRowLayout());
+              },
+            ),
+          ]);
 }

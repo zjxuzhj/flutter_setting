@@ -4,6 +4,7 @@ import 'package:flutter_app/layout/container_demo.dart';
 import 'a_button_page.dart';
 import 'a_layout_page.dart';
 import 'layout/buildup_widget.dart';
+import 'widget/my_app_bar.dart';
 
 class WidgetDemoPage extends StatelessWidget {
   static final String sName = "WidgetDemoPage";
@@ -18,8 +19,8 @@ class WidgetDemoPage extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: Scaffold(
-        appBar: AppBar(
-          title: Text("Widget Demo"),
+        appBar: MyAppBar(
+          centerTitle: "Widget Demo",
         ),
         body: buildRow(context),
       ),

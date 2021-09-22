@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/widget/my_app_bar.dart';
 import 'package:http/http.dart' as http;
 
 class ButtonPage extends StatelessWidget {
@@ -10,17 +11,11 @@ class ButtonPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Widget list App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return Scaffold(
+      appBar: MyAppBar(
+        centerTitle: "Widget Demo",
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Widget Demo"),
-        ),
-        body: buildRow(),
-      ),
+      body: buildRow(),
     );
   }
 

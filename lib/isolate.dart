@@ -116,7 +116,7 @@ class _SampleAppPageState extends State<SampleAppPage> {
       SendPort replyTo = msg[1];
 
       String dataURL = data;
-      http.Response response = await http.get(dataURL);
+      http.Response response = await http.get(Uri.parse(dataURL));
       // Lots of JSON to parse
       replyTo.send(jsonDecode(response.body));
     }
