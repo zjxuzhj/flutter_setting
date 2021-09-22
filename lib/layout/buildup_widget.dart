@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/utils/toast_utils.dart';
 
 /// 组合控件，左边评论 右边图片 ，pad页面
 class BuildUpWidget extends StatelessWidget {
-  static final String sName = "BuildUpWidget";
+  const BuildUpWidget({
+    Key key,
+    this.title,
+    this.detail,
+  }) : super(key: key);
+
+  final String title;
+  final String detail;
 
   @override
   Widget build(BuildContext context) {
+    Toast.show("title:$title detail:$detail");
     return buildUpWidget();
   }
 

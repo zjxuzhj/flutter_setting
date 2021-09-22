@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ///左右格子布局
 class ContainerDemo extends StatelessWidget {
-  static final String sName = "LayoutDemo";
+  static final String sName = "ContainerDemo";
 
   @override
   Widget build(BuildContext context) {

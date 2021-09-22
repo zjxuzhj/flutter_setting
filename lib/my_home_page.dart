@@ -1,13 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_app/routers/routers.dart';
 import 'package:flutter_app/utils/eventbus_util.dart';
 import 'package:flutter_app/widget_demo_page.dart';
 
 class MyHomePage extends StatefulWidget {
   static final String sName = "/";
 
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key key, this.title}) : super(key: key) {
+    Routes.initRoutes();
+  }
 
   final String title;
 
