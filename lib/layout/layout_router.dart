@@ -22,7 +22,11 @@ class LayoutRouter implements IRouterProvider {
       final String detail = params['detail']?.first ?? '';
       return BuildUpWidget(title: title, detail: detail);
     }));
-    router.define(containerDemo, handler: Handler(handlerFunc: (_, __) => ContainerDemo()));
+    router.define(containerDemo, handler: Handler(handlerFunc: (_, Map<String, List<String>> params) {
+      final String title = params['title']?.first ?? '';
+      final String detail = params['detail']?.first ?? '';
+      return ContainerDemo(title: title, detail: detail);
+    }));
     router.define(linearLayoutPage, handler: Handler(handlerFunc: (_, __) => LinearLayoutPage()));
     router.define(relativeLayoutPage, handler: Handler(handlerFunc: (_, __) => RelativeLayoutPage()));
     router.define(titleRowLayout, handler: Handler(handlerFunc: (_, __) => TitleRowLayout()));

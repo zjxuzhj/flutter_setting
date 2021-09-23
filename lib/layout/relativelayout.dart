@@ -8,7 +8,6 @@ final height = window.physicalSize.height;
 
 ///绝对布局和相对布局
 class RelativeLayoutPage extends StatefulWidget {
-  static final String sName = "RelativeLayoutPage";
 
   RelativeLayoutPage({Key key, this.title}) : super(key: key);
 

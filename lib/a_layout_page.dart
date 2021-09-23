@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/layout/layout_router.dart';
 import 'package:flutter_app/routers/fluro_navigator.dart';
 import 'package:flutter_app/utils/navigator_utils.dart';
+import 'package:flutter_app/utils/toast_utils.dart';
 import 'package:flutter_app/widget/my_app_bar.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,26 +45,28 @@ class LayoutPage extends StatelessWidget {
             RaisedButton(
               child: Text("左右格子"),
               onPressed: () {
-                Utils.NavigatorRouter(context, new ContainerDemo());
+                NavigatorUtils.pushResult(context, '${LayoutRouter.containerDemo}?title=sdfsd&detail=aaaa', (Object result) {
+                  Toast.show("页面返回数据：" + result);
+                });
               },
             ),
             FlatButton(
               child: Text("横向纵向排布"),
               onPressed: () {
-                Utils.NavigatorRouter(context, new LinearLayoutPage());
+                NavigatorUtils.push(context, LayoutRouter.linearLayoutPage);
               },
             ),
             OutlineButton(
               child: Text("相对布局"),
               onPressed: () {
-                Utils.NavigatorRouter(context, new RelativeLayoutPage());
+                NavigatorUtils.push(context, LayoutRouter.relativeLayoutPage);
               },
             ),
             RaisedButton.icon(
               icon: Icon(Icons.send),
               label: Text("上下布局"),
               onPressed: () {
-                Utils.NavigatorRouter(context, new TitleRowLayout());
+                NavigatorUtils.push(context, LayoutRouter.titleRowLayout);
               },
             ),
           ]);

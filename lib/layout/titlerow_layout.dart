@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class TitleRowLayout extends StatelessWidget {
-  static final String sName = "TitleRowLayout";
 
   @override
   Widget build(BuildContext context) {

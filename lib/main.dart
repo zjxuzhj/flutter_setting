@@ -8,7 +8,6 @@ import 'package:oktoast/oktoast.dart';
 import 'a_layout_page.dart';
 import 'animation.dart';
 import 'my_home_page.dart';
-import 'layout/container_demo.dart';
 import 'min_function/textfield_limit_page.dart';
 
 void main() {
@@ -22,7 +21,6 @@ void main() {
           TextFieldPage.sName: (BuildContext context) => TextFieldPage(),
           WidgetDemoPage.sName: (BuildContext context) => WidgetDemoPage(),
           ButtonPage.sName: (BuildContext context) => ButtonPage(),
-          ContainerDemo.sName: (BuildContext context) => ContainerDemo(),
           LayoutPage.sName: (BuildContext context) => LayoutPage(),
         },
       ),
