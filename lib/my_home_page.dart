@@ -1,14 +1,41 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/res/constant.dart';
 import 'package:flutter_app/routers/routers.dart';
 import 'package:flutter_app/utils/eventbus_util.dart';
 import 'package:flutter_app/widget_demo_page.dart';
 
+import 'net/dio_utils.dart';
+import 'net/intercept.dart';
+
 class MyHomePage extends StatefulWidget {
   static final String sName = "/";
+  void initDio() {
+    final List<Interceptor> interceptors = <Interceptor>[];
+
+    /// 统一添加身份验证请求头
+    interceptors.add(AuthInterceptor());
+
+    /// 刷新Token
+    interceptors.add(TokenInterceptor());
+
+    /// 打印Log(生产模式去除)
+    if (!Constant.inProduction) {
+      interceptors.add(LoggingInterceptor());
+    }
+
+    /// 适配数据(根据自己的数据结构，可自行选择添加)
+    interceptors.add(AdapterInterceptor());
+    configDio(
+      baseUrl: 'http://10.4.15.67:3000/',
+      interceptors: interceptors,
+    );
+  }
 
   MyHomePage({Key key, this.title}) : super(key: key) {
+    initDio();
     Routes.initRoutes();
   }
 
