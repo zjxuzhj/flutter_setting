@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/res/colors.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'device_utils.dart';
+import '../utils/device_utils.dart';
 
 class ThemeUtils {
 
@@ -14,11 +14,11 @@ class ThemeUtils {
     return Theme.of(context).brightness == Brightness.dark;
   }
 
-  static Color getDarkColor(BuildContext context, Color darkColor) {
+  static Color? getDarkColor(BuildContext context, Color darkColor) {
     return isDark(context) ? darkColor : null;
   }
 
-  static Color getIconColor(BuildContext context) {
+  static Color? getIconColor(BuildContext context) {
     return isDark(context) ? Colours.dark_text : null;
   }
   
@@ -30,11 +30,11 @@ class ThemeUtils {
     return isDark(context) ? Colours.dark_bg_gray_ : Colours.bg_gray;
   }
 
-  static Color getKeyboardActionsColor(BuildContext context) {
+  static Color? getKeyboardActionsColor(BuildContext context) {
     return isDark(context) ? Colours.dark_bg_color : Colors.grey[200];
   }
 
-  static StreamSubscription _subscription;
+  static StreamSubscription? _subscription;
 
   /// 设置NavigationBar样式，使得导航栏颜色与深色模式的设置相符。
   static void setSystemNavigationBar(ThemeMode mode) {
@@ -51,7 +51,7 @@ class ThemeUtils {
 
   /// 设置StatusBar、NavigationBar样式。(仅针对安卓)
   /// 本项目在android MainActivity中已设置，不需要覆盖设置。
-  static void setSystemBarStyle({bool isDark}) {
+  static void setSystemBarStyle({bool? isDark}) {
     if (Device.isAndroid) {
 
       final bool _isDark = isDark ?? window.platformBrightness == Brightness.dark;

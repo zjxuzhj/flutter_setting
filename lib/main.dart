@@ -11,18 +11,21 @@ import 'my_home_page.dart';
 import 'min_function/textfield_limit_page.dart';
 
 void main() {
+  //没啥用的路由表
+  Map<String, WidgetBuilder> routesMap = {
+    AnimationFadeAppTest.sName: (BuildContext context) => AnimationFadeAppTest(),
+    SampleApp2.sName: (BuildContext context) => SampleApp2(),
+    NetworkListRow.sName: (BuildContext context) => NetworkListRow(),
+    TextFieldPage.sName: (BuildContext context) => TextFieldPage(),
+    WidgetDemoPage.sName: (BuildContext context) => WidgetDemoPage(),
+    ButtonPage.sName: (BuildContext context) => ButtonPage(),
+    LayoutPage.sName: (BuildContext context) => LayoutPage(),
+  };
+
   runApp(OKToast(
       child: MaterialApp(
         home: MyHomePage(),
-        routes: <String, WidgetBuilder>{
-          AnimationFadeAppTest.sName: (BuildContext context) => AnimationFadeAppTest(),
-          SampleApp2.sName: (BuildContext context) => SampleApp2(),
-          NetworkListRow.sName: (BuildContext context) => NetworkListRow(),
-          TextFieldPage.sName: (BuildContext context) => TextFieldPage(),
-          WidgetDemoPage.sName: (BuildContext context) => WidgetDemoPage(),
-          ButtonPage.sName: (BuildContext context) => ButtonPage(),
-          LayoutPage.sName: (BuildContext context) => LayoutPage(),
-        },
+        routes: routesMap ,
       ),
       backgroundColor: Colors.black54,
       textPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),

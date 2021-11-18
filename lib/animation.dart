@@ -21,16 +21,16 @@ class AnimationFadeAppTest extends StatelessWidget {
 }
 
 class MyFadeTest extends StatefulWidget {
-  MyFadeTest({Key key, this.title}) : super(key: key);
-  final String title;
+  MyFadeTest({Key? key, this.title}) : super(key: key);
+  final String? title;
 
   @override
   _MyFadeTest createState() => _MyFadeTest();
 }
 
 class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
-  AnimationController controller;
-  CurvedAnimation curve;
+  late AnimationController controller;
+  late CurvedAnimation curve;
 
   @override
   void initState() {
@@ -53,7 +53,7 @@ class _MyFadeTest extends State<MyFadeTest> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
           child: Container(

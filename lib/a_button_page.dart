@@ -1,9 +1,7 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/widget/my_app_bar.dart';
-import 'package:http/http.dart' as http;
 
 import 'layout/models/category_entity.dart';
 import 'net/dio_utils.dart';
@@ -35,26 +33,29 @@ class ButtonPage extends StatelessWidget {
   }
 
   /// 返回Future 适用于刷新，加载更多
-  Future requestNetwork<T>(Method method, {
-    String url,
+  Future requestNetwork<T>(
+    Method method, {
+    String? url,
     bool isShow = true,
     bool isClose = true,
-    NetSuccessCallback<T> onSuccess,
-    NetErrorCallback onError,
+    NetSuccessCallback<T>? onSuccess,
+    NetErrorCallback? onError,
     dynamic params,
-    Map<String, dynamic> queryParameters,
-    CancelToken cancelToken,
-    Options options,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
   }) {
     if (isShow) {}
-    return DioUtils.instance.requestNetwork<T>(method, url,
+    return DioUtils.instance.requestNetwork<T>(
+      method,
+      url!,
       params: params,
       queryParameters: queryParameters,
       options: options,
       cancelToken: cancelToken ?? _cancelToken,
       onSuccess: (data) {
         if (isClose) {}
-        onSuccess?.call(data);
+        onSuccess?.call(data!);
       },
       onError: (code, msg) {},
     );
@@ -65,72 +66,65 @@ class ButtonPage extends StatelessWidget {
     params['q'] = text;
     params['page'] = page.toString();
     params['l'] = 'Dart';
-    return requestNetwork<Category>(Method.get,
-        url: HttpApi.categoryListAll,
-        queryParameters: params,
-        isShow: isShowDialog,
-        onSuccess: (data) {
-          /// 加载成功
-          print(data);
-          print(data.data.categoryList[0].categoryName);
-        },
-        onError: (_, __) {
-          /// 加载失败
-
-        }
-    );
+    return requestNetwork<Category>(Method.get, url: HttpApi.categoryListAll, queryParameters: params, isShow: isShowDialog, onSuccess: (data) {
+      /// 加载成功
+      print(data);
+      print(data.data!.categoryList![0].categoryName);
+    }, onError: (_, __) {
+      /// 加载失败
+    });
   }
 
   Widget buildRow() =>
       // #docregion Row
-  Column(children: [
-    ElevatedButton(
-      child: Text("ElevatedButton"),
-      onPressed: () {
-        // getHttp();
-        search("aaaa", 1, true);
-      },
-    ),
-    RaisedButton(
-      child: Text("RaisedButton"),
-      onPressed: () {},
-    ),
-    FlatButton(onPressed: () {}, child: Text("FlatButton")),
-    OutlineButton(
-      child: Text("OutlineButton"),
-      onPressed: () {},
-    ),
-    IconButton(
-      icon: Icon(Icons.thumb_up),
-      onPressed: () {},
-    ),
-    RaisedButton.icon(onPressed: () {}, icon: Icon(Icons.send), label: Text("发送")),
-    FlatButton(
-      color: Colors.blue,
-      highlightColor: Colors.blue[700],
-      colorBrightness: Brightness.dark,
-      splashColor: Colors.grey,
-      child: Text("Submit"),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      onPressed: () {},
-    ),
-    RaisedButton(
-      color: Colors.blue,
-      highlightColor: Colors.blue[700],
-      colorBrightness: Brightness.dark,
-      splashColor: Colors.grey,
-      child: Text("Submit"),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-      onPressed: () {},
-    ),
-    //自定义button
-    FlatButton(
-        color: Colors.amberAccent,
-        onPressed: () {},
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [Icon(Icons.label_important_outlined), Text("喜欢")],
-        )),
-  ]);
+      Column(children: [
+        ElevatedButton(
+          child: Text("ElevatedButton"),
+          onPressed: () {
+            // getHttp();
+            search("aaaa", 1, true);
+          },
+        ),
+        RaisedButton(
+          child: Text("RaisedButton"),
+          onPressed: () {},
+        ),
+        FlatButton(onPressed: () {}, child: Text("FlatButton")),
+        OutlineButton(
+          child: Text("OutlineButton"),
+          onPressed: () {},
+        ),
+        IconButton(
+          icon: Icon(Icons.thumb_up),
+          onPressed: () {},
+        ),
+        RaisedButton.icon(onPressed: () {}, icon: Icon(Icons.send), label: Text("发送")),
+        FlatButton(
+          color: Colors.blue,
+          highlightColor: Colors.blue[700],
+          colorBrightness: Brightness.dark,
+          splashColor: Colors.grey,
+          child: Text("Submit"),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          onPressed: () {},
+        ),
+        RaisedButton(
+          color: Colors.blue,
+          highlightColor: Colors.blue[700],
+          colorBrightness: Brightness.dark,
+          splashColor: Colors.grey,
+          child: Text("Submit"),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          onPressed: () {},
+        ),
+        //自定义button
+        FlatButton(
+            color: Colors.amberAccent,
+            onPressed: () {},
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [Icon(Icons.label_important_outlined), Text("喜欢")],
+            )),
+      ]);
 }

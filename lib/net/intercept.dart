@@ -5,6 +5,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter_app/res/constant.dart';
 import 'package:flutter_app/utils/device_utils.dart';
 import 'package:flutter_app/utils/log_utils.dart';
+import 'package:flutter_app/utils/navigator_utils.dart';
 import 'package:sprintf/sprintf.dart';
 
 import 'dio_utils.dart';
@@ -13,7 +14,7 @@ import 'error_handle.dart';
 class AuthInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final String accessToken = SpUtil.getString(Constant.accessToken);
+    final String accessToken = SpUtil.getString(Constant.accessToken).nullSafe;
     if (accessToken.isNotEmpty) {
       options.headers['Authorization'] = 'token $accessToken';
     }
@@ -26,15 +27,15 @@ class AuthInterceptor extends Interceptor {
 }
 
 class TokenInterceptor extends Interceptor {
-  Dio _tokenDio;
+  Dio? _tokenDio;
 
-  Future<String> getToken() async {
+  Future<String?> getToken() async {
     final Map<String, String> params = <String, String>{};
-    params['refresh_token'] = SpUtil.getString(Constant.refreshToken);
+    params['refresh_token'] = SpUtil.getString(Constant.refreshToken).nullSafe;
     try {
       _tokenDio ??= Dio();
-      _tokenDio.options = DioUtils.instance.dio.options;
-      final Response response = await _tokenDio.post<dynamic>('lgn/refreshToken', data: params);
+      _tokenDio!.options = DioUtils.instance.dio.options;
+      final Response response = await _tokenDio!.post<dynamic>('lgn/refreshToken', data: params);
       if (response.statusCode == ExceptionHandle.success) {
         return (json.decode(response.data.toString()) as Map<String, dynamic>)['access_token'] as String;
       }
@@ -51,9 +52,9 @@ class TokenInterceptor extends Interceptor {
       Log.d('-----------自动刷新Token------------');
       final Dio dio = DioUtils.instance.dio;
       dio.lock();
-      final String accessToken = await getToken(); // 获取新的accessToken
+      final String? accessToken = await getToken(); // 获取新的accessToken
       Log.e('-----------NewToken: $accessToken ------------');
-      SpUtil.putString(Constant.accessToken, accessToken);
+      SpUtil.putString(Constant.accessToken, accessToken.nullSafe);
       dio.unlock();
 
       if (accessToken != null) {
@@ -70,7 +71,7 @@ class TokenInterceptor extends Interceptor {
           Log.e('----------- 重新请求接口 ------------');
 
           /// 避免重复执行拦截器，使用tokenDio
-          final Response response = await _tokenDio.request<dynamic>(
+          final Response response = await _tokenDio!.request<dynamic>(
             request.path,
             data: request.data,
             queryParameters: request.queryParameters,
@@ -89,8 +90,8 @@ class TokenInterceptor extends Interceptor {
 }
 
 class LoggingInterceptor extends Interceptor {
-  DateTime _startTime;
-  DateTime _endTime;
+  late DateTime _startTime;
+  late DateTime _endTime;
 
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
@@ -150,7 +151,7 @@ class AdapterInterceptor extends Interceptor {
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {
     if (err.response != null) {
-      adapterData(err.response);
+      adapterData(err.response!);
     }
     super.onError(err, handler);
   }

@@ -5,13 +5,13 @@ import 'package:flutter_app/widget/my_app_bar.dart';
 ///左右格子布局
 class ContainerDemo extends StatelessWidget {
   const ContainerDemo({
-    Key key,
+    Key? key,
     this.title,
     this.detail,
   }) : super(key: key);
 
-  final String title;
-  final String detail;
+  final String? title;
+  final String? detail;
 
   @override
   Widget build(BuildContext context) {

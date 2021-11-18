@@ -16,7 +16,7 @@ class Device {
   static bool get isFuchsia => !isWeb && Platform.isFuchsia;
   static bool get isIOS => !isWeb && Platform.isIOS;
 
-  static AndroidDeviceInfo _androidInfo;
+  static late AndroidDeviceInfo _androidInfo;
 
   static Future<void> initDeviceInfo() async {
     if (isAndroid) {

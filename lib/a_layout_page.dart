@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/layout/layout_router.dart';
 import 'package:flutter_app/routers/fluro_navigator.dart';
 import 'package:flutter_app/utils/navigator_utils.dart';
-import 'package:flutter_app/utils/toast_utils.dart';
+import 'package:flutter_app/util/toast_utils.dart';
 import 'package:flutter_app/widget/my_app_bar.dart';
 import 'package:http/http.dart' as http;
 
@@ -46,7 +46,7 @@ class LayoutPage extends StatelessWidget {
               child: Text("左右格子"),
               onPressed: () {
                 NavigatorUtils.pushResult(context, '${LayoutRouter.containerDemo}?title=sdfsd&detail=aaaa', (Object result) {
-                  Toast.show("页面返回数据：" + result);
+                  Toast.show("页面返回数据：" + result.toString());
                 });
               },
             ),

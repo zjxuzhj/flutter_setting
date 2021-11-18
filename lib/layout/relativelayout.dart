@@ -9,9 +9,9 @@ final height = window.physicalSize.height;
 ///绝对布局和相对布局
 class RelativeLayoutPage extends StatefulWidget {
 
-  RelativeLayoutPage({Key key, this.title}) : super(key: key);
+  RelativeLayoutPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   BaseState createState() => BaseState();

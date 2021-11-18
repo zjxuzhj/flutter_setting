@@ -23,7 +23,7 @@ class GridList extends StatelessWidget {
   }
 
   List<Container> _buildGridTitleList(int count) {
-    var list = new List<Container>();
+    var list = <Container>[];
     for (int i = 1; i < count; i++) {
       list.add(Container(child: Image.asset('images/pic$i.jpg')));
     }

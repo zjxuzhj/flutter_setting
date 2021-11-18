@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/res/colors.dart';
 import 'package:flutter_app/res/resources.dart';
-import 'package:flutter_app/utils/theme_utils.dart';
+import 'package:flutter_app/util/theme_utils.dart';
 
 /// 默认字号18，白字蓝底，高度48
 class MyButton extends StatelessWidget {
 
   const MyButton({
-    Key key,
+    Key? key,
     this.text = '',
     this.fontSize = Dimens.font_sp18,
     this.textColor,
@@ -24,13 +24,13 @@ class MyButton extends StatelessWidget {
 
   final String text;
   final double fontSize;
-  final Color textColor;
-  final Color disabledTextColor;
-  final Color backgroundColor;
-  final Color disabledBackgroundColor;
-  final double minHeight;
-  final double minWidth;
-  final VoidCallback onPressed;
+  final Color? textColor;
+  final Color? disabledTextColor;
+  final Color? backgroundColor;
+  final Color? disabledBackgroundColor;
+  final double? minHeight;
+  final double? minWidth;
+  final VoidCallback? onPressed;
   final EdgeInsetsGeometry padding;
   final double radius;
   final BorderSide side;
@@ -62,7 +62,7 @@ class MyButton extends StatelessWidget {
           return (textColor ?? (isDark ? Colours.dark_button_text : Colors.white)).withOpacity(0.12);
         }),
         // 按钮最小大小
-        minimumSize: (minWidth == null || minHeight == null) ? null : MaterialStateProperty.all<Size>(Size(minWidth, minHeight)),
+        minimumSize: (minWidth == null || minHeight == null) ? null : MaterialStateProperty.all<Size>(Size(minWidth!, minHeight!)),
         padding: MaterialStateProperty.all<EdgeInsetsGeometry>(padding),
         shape: MaterialStateProperty.all<OutlinedBorder>(
           RoundedRectangleBorder(

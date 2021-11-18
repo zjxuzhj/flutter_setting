@@ -7,7 +7,7 @@ import 'routers.dart';
 class NavigatorUtils {
   
   static void push(BuildContext context, String path,
-      {bool replace = false, bool clearStack = false, Object arguments}) {
+      {bool replace = false, bool clearStack = false, Object? arguments}) {
     unfocus();
     Routes.router.navigateTo(context, path,
       replace: replace,
@@ -20,7 +20,7 @@ class NavigatorUtils {
   }
 
   static void pushResult(BuildContext context, String path, Function(Object) function,
-      {bool replace = false, bool clearStack = false, Object arguments}) {
+      {bool replace = false, bool clearStack = false, Object? arguments}) {
     unfocus();
     Routes.router.navigateTo(context, path,
       replace: replace,
@@ -29,7 +29,7 @@ class NavigatorUtils {
       routeSettings: RouteSettings(
         arguments: arguments,
       ),
-    ).then((Object result) {
+    ).then((Object? result) {
       // 页面返回result为null
       if (result == null) {
         return;

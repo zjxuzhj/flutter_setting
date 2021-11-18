@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:flutter_app/res/colors.dart';
 import 'package:flutter_app/res/dimens.dart';
 import 'package:flutter_app/res/gaps.dart';
-import 'package:flutter_app/utils/theme_utils.dart';
+import 'package:flutter_app/util/theme_utils.dart';
 
 import 'my_button.dart';
 
 /// 自定义AppBar
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar(
-      {Key key,
+      {Key? key,
       this.backgroundColor,
       this.title = '',
       this.centerTitle = '',
@@ -21,13 +21,13 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       this.isBack = true})
       : super(key: key);
 
-  final Color backgroundColor;
+  final Color? backgroundColor;
   final String title;
   final String centerTitle;
   final String backImg;
-  final Color backImgColor;
+  final Color? backImgColor;
   final String actionName;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final bool isBack;
 
   @override

@@ -5,13 +5,13 @@ const Duration _kExpand = Duration(milliseconds: 200);
 ///扩展布局（查看更多，收起）
 ///在平时的开发中，我们有时会用到扩展布局，这种布局仅显示view的一部分，当点击查看更多时，整个view将会展现。点击收起，又会展示view的一部分。
 class ExpansionView extends StatefulWidget {
-  final double defaultHeight;
-  final Widget closeView;
-  final Widget openView;
-  final Widget contentView;
+  final double? defaultHeight;
+  final Widget? closeView;
+  final Widget? openView;
+  final Widget? contentView;
 
   //默认是否打开
-  final bool defaultYesOpen;
+  final bool? defaultYesOpen;
 
   //这里都是必传的
   ExpansionView(
@@ -25,11 +25,11 @@ class ExpansionView extends StatefulWidget {
 }
 
 class _ExpansionViewState extends State<ExpansionView> with SingleTickerProviderStateMixin {
-  AnimationController _controller;
-  Animation<double> _animation;
+  late AnimationController _controller;
+  late Animation<double> _animation;
 
   //整个高度
-  double _allHeight;
+  late double _allHeight;
 
   GlobalKey _textKey = GlobalKey();
 
@@ -42,11 +42,11 @@ class _ExpansionViewState extends State<ExpansionView> with SingleTickerProvider
     super.initState();
     _controller = AnimationController(duration: _kExpand, vsync: this);
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      RenderBox renderBoxRed = _textKey.currentContext.findRenderObject();
-      _allHeight = renderBoxRed.size.height;
+    WidgetsBinding.instance!.addPostFrameCallback((timeStamp) {
+      RenderBox? renderBoxRed = _textKey.currentContext!.findRenderObject() as RenderBox?;
+      _allHeight = renderBoxRed!.size.height;
 
-      if (_allHeight > widget.defaultHeight) {
+      if (_allHeight > widget.defaultHeight!) {
         //显示控制view
         _yesShowControllerView = true;
         _animation = Tween(begin: widget.defaultHeight, end: _allHeight).animate(_controller)
@@ -54,7 +54,7 @@ class _ExpansionViewState extends State<ExpansionView> with SingleTickerProvider
             setState(() {});
           });
         //默认打开
-        if (widget.defaultYesOpen) {
+        if (widget.defaultYesOpen!) {
           if (_animation.value == widget.defaultHeight) {
             _controller.forward();
           }
@@ -100,12 +100,12 @@ class _ExpansionViewState extends State<ExpansionView> with SingleTickerProvider
     );
   }
 
-  double _getHeight() {
+  double? _getHeight() {
     //height为null时，是适应子view的高度
     if (_yesShowControllerView) {
-      return _animation == null ? widget.defaultHeight : _animation.value;
+      return _animation == 0 ? widget.defaultHeight : _animation.value;
     }
-    return null;
+    return 0;
   }
 
   Widget _getControllerView() {

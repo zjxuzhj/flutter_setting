@@ -54,6 +54,7 @@ class WidgetDemoPage extends StatelessWidget {
                 },
               ),
               ElevatedButton(child: Text("Build Up"), onPressed: () {}),
+              ElevatedButton(child: Text("Login Page"), onPressed: () {}),
             ]),
         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
       );

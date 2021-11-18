@@ -13,7 +13,7 @@ class TextFieldPage extends StatefulWidget {
 }
 
 class _TextFieldPageState extends State<TextFieldPage> {
-  TextEditingController _textEditingController;
+  TextEditingController? _textEditingController;
 
   @override
   void initState() {
@@ -73,8 +73,7 @@ class _TextFieldPageState extends State<TextFieldPage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
-    _textEditingController.dispose();
+    _textEditingController?.dispose();
     super.dispose();
   }
 }

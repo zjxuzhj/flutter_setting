@@ -20,7 +20,7 @@ class NetworkListRow extends StatelessWidget {
 }
 
 class NetworkListRowPage extends StatefulWidget {
-  NetworkListRowPage({Key key}) : super(key: key);
+  NetworkListRowPage({Key? key}) : super(key: key);
 
   @override
   _NetworkListRowPageState createState() => _NetworkListRowPageState();

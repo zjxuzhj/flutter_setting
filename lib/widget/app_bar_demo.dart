@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ///标题
 class AppBarDemo extends StatelessWidget {
-  AppBarDemo({this.title});
+  AppBarDemo(this.title);
 
   final Widget title;
 

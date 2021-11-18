@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 /// 创建一个在构造器接收标签参数的 CustomButton
 class CustomButtonPage extends StatefulWidget {
-  CustomButtonPage({Key key, this.title}) : super(key: key);
+  CustomButtonPage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   BaseState createState() => BaseState();

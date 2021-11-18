@@ -6,17 +6,17 @@ class LifecycleWatcher extends StatefulWidget {
 }
 
 class _LifecycleWatcherState extends State<LifecycleWatcher> with WidgetsBindingObserver {
-  AppLifecycleState _lastLifecycleState;
+  late AppLifecycleState _lastLifecycleState;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance!.addObserver(this);
   }
 
   @override
   void dispose() {
-    WidgetsBinding.instance.removeObserver(this);
+    WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
   }
 

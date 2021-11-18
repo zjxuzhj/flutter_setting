@@ -12,6 +12,7 @@ import 'net/intercept.dart';
 
 class MyHomePage extends StatefulWidget {
   static final String sName = "/";
+
   void initDio() {
     final List<Interceptor> interceptors = <Interceptor>[];
 
@@ -34,12 +35,12 @@ class MyHomePage extends StatefulWidget {
     );
   }
 
-  MyHomePage({Key key, this.title}) : super(key: key) {
+  MyHomePage({Key? key, this.title}) : super(key: key) {
     initDio();
     Routes.initRoutes();
   }
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -49,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
   List<Widget> widgets = [];
   var eventBusFn;
-  StreamSubscription<LoginEvent> _loginSubscription;
-  StreamSubscription<OrderStatusEvent> _orderStateSubscription;
+  late StreamSubscription<LoginEvent> _loginSubscription;
+  late StreamSubscription<OrderStatusEvent> _orderStateSubscription;
 
   String loginStatus = "未登录";
 

@@ -16,12 +16,12 @@ class Routes {
 
   static void initRoutes() {
     /// 指定路由跳转错误返回页
-    router.notFoundHandler = Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) {
+    router.notFoundHandler = Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) {
       debugPrint('未找到目标页');
       return const NotFoundPage();
     });
 
-    router.define(home, handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => MyHomePage()));
+    router.define(home, handler: Handler(handlerFunc: (BuildContext? context, Map<String, List<String>> params) => MyHomePage()));
 
     // router.define(webViewPage, handler: Handler(handlerFunc: (_, params) {
     //   final String title = params['title']?.first ?? '';

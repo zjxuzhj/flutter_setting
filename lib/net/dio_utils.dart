@@ -16,11 +16,11 @@ List<Interceptor> _interceptors = [];
 
 /// 初始化Dio配置
 void configDio({
-  int connectTimeout,
-  int receiveTimeout,
-  int sendTimeout,
-  String baseUrl,
-  List<Interceptor> interceptors,
+  int? connectTimeout,
+  int? receiveTimeout,
+  int? sendTimeout,
+  String? baseUrl,
+  List<Interceptor>? interceptors,
 }) {
   _connectTimeout = connectTimeout ?? _connectTimeout;
   _receiveTimeout = receiveTimeout ?? _receiveTimeout;
@@ -77,7 +77,7 @@ class DioUtils {
 
   static DioUtils get instance => DioUtils();
 
-  static Dio _dio;
+  static late Dio _dio;
 
   Dio get dio => _dio;
 
@@ -85,10 +85,10 @@ class DioUtils {
   Future<BaseEntity<T>> _request<T>(
     String method,
     String url, {
-    Object data,
-    Map<String, dynamic> queryParameters,
-    CancelToken cancelToken,
-    Options options,
+    Object? data,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
   }) async {
     final Response<String> response = await _dio.request<String>(
       url,
@@ -113,7 +113,7 @@ class DioUtils {
     }
   }
 
-  Options _checkOptions(String method, Options options) {
+  Options _checkOptions(String method, Options? options) {
     options ??= Options();
     options.method = method;
     return options;
@@ -122,12 +122,12 @@ class DioUtils {
   Future requestNetwork<T>(
     Method method,
     String url, {
-    NetSuccessCallback<T> onSuccess,
-    NetErrorCallback onError,
-    Object params,
-    Map<String, dynamic> queryParameters,
-    CancelToken cancelToken,
-    Options options,
+    NetSuccessCallback<T?>? onSuccess,
+    NetErrorCallback? onError,
+    Object? params,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
   }) {
     return _request<T>(
       method.value,
@@ -153,12 +153,12 @@ class DioUtils {
   void asyncRequestNetwork<T>(
     Method method,
     String url, {
-    NetSuccessCallback<T> onSuccess,
-    NetErrorCallback onError,
-    Object params,
-    Map<String, dynamic> queryParameters,
-    CancelToken cancelToken,
-    Options options,
+    NetSuccessCallback<T?>? onSuccess,
+    NetErrorCallback? onError,
+    Object? params,
+    Map<String, dynamic>? queryParameters,
+    CancelToken? cancelToken,
+    Options? options,
   }) {
     Stream.fromFuture(_request<T>(
       method.value,
@@ -188,7 +188,7 @@ class DioUtils {
     }
   }
 
-  void _onError(int code, String msg, NetErrorCallback onError) {
+  void _onError(int? code, String msg, NetErrorCallback? onError) {
     if (code == null) {
       code = ExceptionHandle.unknown_error;
       msg = '未知异常';

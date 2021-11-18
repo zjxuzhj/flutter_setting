@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/utils/toast_utils.dart';
+import 'package:flutter_app/util/toast_utils.dart';
 
 /// 组合控件，左边评论 右边图片 ，pad页面
 class BuildUpWidget extends StatelessWidget {
   const BuildUpWidget({
-    Key key,
+    Key? key,
     this.title,
     this.detail,
   }) : super(key: key);
 
-  final String title;
-  final String detail;
+  final String? title;
+  final String? detail;
 
   @override
   Widget build(BuildContext context) {
