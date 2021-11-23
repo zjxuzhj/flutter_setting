@@ -121,7 +121,7 @@ class _MyTextFieldState extends State<MyTextField> {
         ),
         enabledBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-            color: Theme.of(context).dividerTheme.color!,
+            color: themeData.primaryColor,
             width: 0.8,
           ),
         ),

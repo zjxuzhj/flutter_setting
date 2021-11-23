@@ -1,6 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/layout/layout_router.dart';
+import 'package:flutter_app/login/login_router.dart';
 
 import '../my_home_page.dart';
 import 'i_router.dart';
@@ -33,6 +34,7 @@ class Routes {
 
     /// 各自路由由各自模块管理，统一在此添加初始化
     _listRouter.add(LayoutRouter());
+    _listRouter.add(LoginRouter());
 
     /// 初始化路由
     void initRouter(IRouterProvider routerProvider) {

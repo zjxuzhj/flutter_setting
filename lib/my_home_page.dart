@@ -3,10 +3,12 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/res/constant.dart';
+import 'package:flutter_app/routers/fluro_navigator.dart';
 import 'package:flutter_app/routers/routers.dart';
 import 'package:flutter_app/utils/eventbus_util.dart';
 import 'package:flutter_app/widget_demo_page.dart';
 
+import 'login/login_router.dart';
 import 'net/dio_utils.dart';
 import 'net/intercept.dart';
 
@@ -80,9 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
     ///直接路由跳转会导致'!_debugLocked': is not true.问题
     ///可以使用Future去包含路由跳转
     Future.delayed(Duration.zero, () {
-      Navigator.of(context).pop();
-      Navigator.of(context).pushNamed(WidgetDemoPage.sName);
+      // Navigator.of(context).pop();
+      // Navigator.of(context).pushNamed(WidgetDemoPage.sName);
+      _goLogin();
     });
+  }
+
+  void _goLogin() {
+    NavigatorUtils.push(context, LoginRouter.loginPage, replace: true);
   }
 
   @override

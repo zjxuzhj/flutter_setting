@@ -5,6 +5,7 @@ import 'package:flustars/flustars.dart';
 import 'package:flutter_app/res/constant.dart';
 import 'package:flutter_app/utils/device_utils.dart';
 import 'package:flutter_app/utils/log_utils.dart';
+import 'package:flutter_app/util/other_utils.dart';
 import 'package:flutter_app/utils/navigator_utils.dart';
 import 'package:sprintf/sprintf.dart';
 

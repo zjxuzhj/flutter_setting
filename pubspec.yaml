@@ -19,11 +19,18 @@ version: 1.0.0+1
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
 
 dependencies:
-#  http: ^0.12.0+1
+  #  http: ^0.12.0+1
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  # 去除网页URL中的“#”(hash) https://flutter.cn/docs/development/ui/navigation/url-strategies
+  url_strategy: 0.2.0
+  # Localization https://github.com/dart-lang/intl
+  intl: ^0.17.0
   event_bus: ^2.0.0
   # 路由框架 https://github.com/theyakka/fluro
   fluro: ^2.0.3
@@ -31,6 +38,8 @@ dependencies:
   common_utils: 2.0.2
   # Flutter 常用工具类库 https://github.com/Sky24n/flustars
   flustars: ^2.0.1
+  # 启动URL的插件（支持Web） https://github.com/flutter/plugins/tree/master/packages/url_launcher
+  url_launcher: 6.0.10
   # 图片缓存 https://github.com/renefloor/flutter_cached_network_image
   cached_network_image: ^3.1.0
   # 获取当前设备信息 https://github.com/fluttercommunity/plus_plugins/tree/main/packages/device_info_plus
@@ -62,6 +71,7 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
 
+  generate: true
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

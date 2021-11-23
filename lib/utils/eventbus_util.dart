@@ -26,7 +26,7 @@ class EventBusUtil {
     if (_eventBus == null) {
       _eventBus = EventBus();
     }
-    _eventBus!.fire(e);
+    _eventBus?.fire(e);
   }
 }
 
